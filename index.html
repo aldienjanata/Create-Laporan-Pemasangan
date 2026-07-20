@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Tools generate laporan WA pemasangan internet Wifian - Banyumas, Cilacap, Kebumen, Rowokele" />
+
+  <!-- ── PWA Meta ── -->
+  <meta name="theme-color" content="#0f4c81" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Laporan WA" />
+  <meta name="application-name" content="Laporan WA" />
+  <meta name="msapplication-TileColor" content="#0f4c81" />
+  <meta name="msapplication-TileImage" content="icons/icon-144.png" />
+
+  <!-- ── PWA Manifest ── -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- ── Apple Touch Icons ── -->
+  <link rel="apple-touch-icon" href="icons/icon-152.png" />
+  <link rel="apple-touch-icon" sizes="72x72"  href="icons/icon-72.png" />
+  <link rel="apple-touch-icon" sizes="96x96"  href="icons/icon-96.png" />
+  <link rel="apple-touch-icon" sizes="128x128" href="icons/icon-128.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="icons/icon-144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png" />
+
+  <!-- ── Favicon ── -->
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="shortcut icon" href="icons/icon-96.png" />
+
+  <title>Laporan Pemasangan | Wifian Solution</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app-container">
+
+  <!-- ══════════════════════════════════════════════════════════
+       SCREEN 1: PILIH SITE
+  ══════════════════════════════════════════════════════════ -->
+  <div id="site-screen" class="site-screen">
+
+    <!-- Hero Header -->
+    <div class="site-hero">
+      <div class="site-logo-wrap animate-float">
+        <img src="Logo/Wifian Solution.png" alt="Wifian Solution" />
+      </div>
+      <h1 class="site-hero-title">Laporan Pemasangan</h1>
+      <p class="site-hero-sub">Pilih area site untuk memulai input data</p>
+    </div>
+
+    <!-- Body -->
+    <div class="site-body">
+      <div class="site-choose-label">
+        <span>📍</span> Pilih Area Site
+      </div>
+
+      <!-- Grid 2x2 -->
+      <div class="site-grid">
+        <div class="site-card" data-area="Banyumas" role="button" tabindex="0" aria-label="Pilih area Banyumas" style="animation-delay: 0.1s;">
+          <div class="site-card-check">✓</div>
+          <div class="site-card-name">Banyumas</div>
+          <div class="site-card-desc">@bms.wifian.net.id</div>
+        </div>
+
+        <div class="site-card" data-area="Cilacap" role="button" tabindex="0" aria-label="Pilih area Cilacap" style="animation-delay: 0.2s;">
+          <div class="site-card-check">✓</div>
+          <div class="site-card-name">Cilacap</div>
+          <div class="site-card-desc">@clp.wifian.net.id</div>
+        </div>
+
+        <div class="site-card" data-area="Herman" role="button" tabindex="0" aria-label="Pilih area Herman" style="animation-delay: 0.3s;">
+          <div class="site-card-check">✓</div>
+          <div class="site-card-name">Herman</div>
+          <div class="site-card-desc">@clp.wifian.net.id</div>
+        </div>
+
+        <div class="site-card" data-area="Kebumen" role="button" tabindex="0" aria-label="Pilih area Kebumen" style="animation-delay: 0.4s;">
+          <div class="site-card-check">✓</div>
+          <div class="site-card-name">Kebumen</div>
+          <div class="site-card-desc">@kbm.wifian.net.id</div>
+        </div>
+      </div>
+
+      <!-- 5th area full-width -->
+      <div class="site-grid site-grid-last">
+        <div class="site-card" data-area="Rowokele" role="button" tabindex="0" aria-label="Pilih area Rowokele" style="animation-delay: 0.5s;">
+          <div class="site-card-check">✓</div>
+          <div class="site-card-name">Rowokele</div>
+          <div class="site-card-desc">@rkw.wifian.net.id</div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <button id="btn-masuk" class="btn-masuk" type="button" aria-label="Masuk ke form">
+        Mulai Input Data →
+      </button>
+
+      <!-- Theme toggle on site screen -->
+      <div class="site-theme-row">
+        <button class="theme-toggle" aria-label="Toggle tema">
+          <span class="icon">🌙</span> Mode Gelap
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SCREEN 2: FORM INPUT
+  ══════════════════════════════════════════════════════════ -->
+  <div id="form-screen" class="form-screen">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-top">
+        <div class="header-left">
+          <button id="btn-back" class="btn-back" type="button" aria-label="Kembali">‹</button>
+          <img src="Logo/Wifian Solution.png" alt="Wifian" class="header-logo-img" />
+        </div>
+        <div class="header-info">
+          <div id="header-site-name" class="header-site-name">Pemasangan</div>
+          <div id="header-site-badge" class="header-site-badge">—</div>
+        </div>
+        <button class="header-theme-btn" aria-label="Toggle tema">
+          <span class="icon">🌙</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Form -->
+    <main class="main-content">
+      <form id="laporan-form" autocomplete="off" novalidate>
+
+        <!-- ── OUTPUT ── -->
+        <div class="output-section" id="output-section">
+          <div class="output-card">
+            <div class="output-header">
+              <span class="output-header-title">✅ Hasil Laporan WA</span>
+              <button type="button" id="btn-copy" class="btn-copy">📋 Copy</button>
+            </div>
+            <pre id="output-text" class="output-text"></pre>
+          </div>
+        </div>
+
+        <!-- ── SEKSI 1: TANGGAL ── -->
+        <div class="section-card">
+          <div class="section-title"><span>📅</span> Tanggal</div>
+          <div class="form-group">
+            <label class="form-label" for="tanggal">Tanggal Pemasangan</label>
+            <input type="date" id="tanggal" class="form-control" />
+          </div>
+        </div>
+
+        <!-- ── SEKSI 2: DATA PELANGGAN ── -->
+        <div class="section-card">
+          <div class="section-title"><span>👤</span> Data Pelanggan</div>
+
+          <!-- ID Pelanggan -->
+          <div class="form-group">
+            <label class="form-label" for="id-pelanggan-input">ID Pelanggan</label>
+            <div class="input-with-suffix">
+              <input type="text" id="id-pelanggan-input"
+                     placeholder="Angka saja, contoh: 816809021"
+                     inputmode="text" autocomplete="off" />
+              <span class="input-suffix" id="id-suffix">— Pilih site dulu —</span>
+            </div>
+            <p class="input-hint" id="id-hint">
+              <span>ℹ️</span>
+              Isi angka saja, contoh: <code>816809021</code>
+            </p>
+          </div>
+
+          <!-- NIK -->
+          <div class="form-group">
+            <label class="form-label" for="nik">
+              NIK <span class="required">*</span>
+              <span style="font-weight:400;color:var(--text-muted);font-size:11px;margin-left:4px">(16 digit)</span>
+            </label>
+            <input type="text" id="nik" class="form-control"
+                   placeholder="16 digit NIK" inputmode="numeric"
+                   maxlength="16" />
+            <div class="nik-error" id="nik-error"></div>
+          </div>
+
+          <!-- Nama -->
+          <div class="form-group">
+            <label class="form-label" for="nama">Nama Pelanggan</label>
+            <input type="text" id="nama" class="form-control" placeholder="Nama lengkap" />
+          </div>
+
+          <!-- Alamat - 4 field terpisah -->
+          <div class="form-group">
+            <label class="form-label">Alamat</label>
+            <div class="alamat-grid">
+              <!-- Jalan/Dusun - full width -->
+              <div class="col-full">
+                <span class="alamat-sub-label">Jalan / Dusun</span>
+                <input type="text" id="alamat-jalan" class="form-control"
+                       placeholder="contoh: Jl. Kerinci / Dusun Krajan" />
+              </div>
+              <!-- RT RW -->
+              <div>
+                <span class="alamat-sub-label">RT / RW</span>
+                <input type="text" id="alamat-rtrw" class="form-control"
+                       placeholder="01/02 atau RT 01/02" />
+              </div>
+              <!-- Desa -->
+              <div>
+                <span class="alamat-sub-label">Desa / Kelurahan</span>
+                <input type="text" id="alamat-desa" class="form-control"
+                       placeholder="Mujur / Desa Mujur" />
+              </div>
+              <!-- Kecamatan - full width -->
+              <div class="col-full">
+                <span class="alamat-sub-label">Kecamatan</span>
+                <input type="text" id="alamat-kecamatan" class="form-control"
+                       placeholder="Kroya" />
+              </div>
+            </div>
+            <p class="input-hint" style="margin-top:6px">
+              <span>ℹ️</span>
+              RT/RW dan Desa akan diformat otomatis menjadi rapih
+            </p>
+          </div>
+
+          <!-- Status Tempat Tinggal -->
+          <div class="form-group">
+            <label class="form-label" for="status-tempat">Status Tempat Tinggal</label>
+            <select id="status-tempat" class="form-control">
+              <option value="">— Pilih Status —</option>
+            </select>
+          </div>
+
+          <!-- WA -->
+          <div class="form-group">
+            <label class="form-label" for="wa">No. WhatsApp</label>
+            <input type="tel" id="wa" class="form-control"
+                   placeholder="089516759447 atau +62895..." inputmode="tel" />
+            <p class="input-hint">
+              <span>ℹ️</span> Format +62 otomatis diubah ke 08xxx
+            </p>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input type="email" id="email" class="form-control"
+                   placeholder="contoh@gmail.com"
+                   inputmode="email" autocapitalize="none" />
+            <p class="input-hint">
+              <span>ℹ️</span> Email tidak diubah ke huruf kapital
+            </p>
+          </div>
+        </div>
+
+        <!-- ── SEKSI 3: PAKET & KOMERSIAL ── -->
+        <div class="section-card">
+          <div class="section-title"><span>📦</span> Paket &amp; Komersial</div>
+
+          <div class="form-group">
+            <label class="form-label" for="bandwidth">Bandwith / Paket</label>
+            <select id="bandwidth" class="form-control">
+              <option value="">— Pilih site dulu —</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="marketing">Marketing</label>
+            <select id="marketing" class="form-control">
+              <option value="">— Pilih site dulu —</option>
+            </select>
+          </div>
+
+          <!-- Koordinator - Searchable -->
+          <div class="form-group">
+            <label class="form-label">Koordinator</label>
+            <div class="searchable-select-wrapper">
+              <button type="button" id="koordinator-trigger" class="search-select-trigger"
+                      aria-haspopup="listbox" aria-expanded="false">
+                <span class="trigger-text">— Pilih site dulu —</span>
+                <span class="trigger-arrow">▾</span>
+              </button>
+              <!-- Dropdown -->
+              <div id="koordinator-dropdown" class="search-select-dropdown" role="listbox">
+                <div class="search-select-input-wrap">
+                  <input type="text" id="koordinator-search"
+                         class="search-select-input"
+                         placeholder="🔍  Ketik untuk mencari..." />
+                </div>
+                <div id="koordinator-list" class="search-select-list"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── SEKSI 4: TEKNIS JARINGAN ── -->
+        <div class="section-card">
+          <div class="section-title"><span>🔧</span> Teknis Jaringan</div>
+
+          <!-- Share Lok -->
+          <div class="form-group">
+            <label class="form-label" for="share-lok">Share Lok (Lokasi Pelanggan)</label>
+            <textarea id="share-lok" class="form-control" rows="3"
+              placeholder="Tempel teks atau URL dari Google Maps&#10;Contoh:&#10;http://maps.google.com/?q=-7.616,109.260"></textarea>
+            <p class="input-hint">
+              <span>ℹ️</span> Hanya URL maps yang tersimpan, teks lain diabaikan otomatis
+            </p>
+          </div>
+
+          <!-- ID FAT/ODC -->
+          <div class="form-group">
+            <label class="form-label" for="fat-odc">ID FAT / ODC</label>
+            <input type="text" id="fat-odc" class="form-control"
+                   placeholder="Kosongkan jika tidak ada" />
+          </div>
+
+          <!-- Share lok ODP -->
+          <div class="form-group">
+            <label class="form-label" for="share-odp">Share Lok ODP</label>
+            <textarea id="share-odp" class="form-control" rows="3"
+              placeholder="ODP GRENGGENG&#10;2026/07/20 @ 10:52&#10;http://maps.google.com/?q=-7.638,109.417"></textarea>
+            <p class="input-hint">
+              <span>ℹ️</span> Hanya URL maps yang tersimpan, teks lain diabaikan otomatis
+            </p>
+          </div>
+
+          <!-- ID ODP -->
+          <div class="form-group">
+            <label class="form-label" for="id-odp">ID ODP</label>
+            <input type="text" id="id-odp" class="form-control"
+                   placeholder="Kosongkan jika tidak ada" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="sn">SN (Serial Number)</label>
+              <input type="text" id="sn" class="form-control"
+                     placeholder="HWTC1CEC5AA3" autocapitalize="characters" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="vlan-id">Vlan-ID</label>
+              <input type="text" id="vlan-id" class="form-control"
+                     placeholder="182" inputmode="numeric" />
+            </div>
+          </div>
+
+          <!-- OLT - otomatis -->
+          <div class="form-group">
+            <label class="form-label" for="olt">OLT</label>
+            <input type="text" id="olt" class="form-control"
+                   placeholder="Otomatis sesuai area" readonly />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="redaman">Redaman</label>
+              <input type="text" id="redaman" class="form-control"
+                     placeholder="-25" inputmode="decimal" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="panjang-kabel">Panjang Kabel</label>
+              <input type="text" id="panjang-kabel" class="form-control"
+                     placeholder="80m (no007)" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="sisa-port">Sisa Port</label>
+            <input type="text" id="sisa-port" class="form-control"
+                   placeholder="12 (Odp16)" />
+          </div>
+        </div>
+
+        <!-- ── SEKSI 5: INFO TAMBAHAN ── -->
+        <div class="section-card">
+          <div class="section-title"><span>📋</span> Info Tambahan</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="wifi-seb">Wifi Sebelumnya</label>
+              <input type="text" id="wifi-seb" class="form-control"
+                     placeholder="- jika tidak ada" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="paket">Paket Lama</label>
+              <input type="text" id="paket" class="form-control"
+                     placeholder="- jika tidak ada" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="teknisi">Nama Teknisi</label>
+            <input type="text" id="teknisi" class="form-control"
+                   placeholder="Nama teknisi yang pasang" />
+          </div>
+
+          <!-- Status DONE - fixed -->
+          <div class="form-group">
+            <label class="form-label">Status Pemasangan</label>
+            <div class="status-done-badge">
+              <div class="status-done-dot"></div>
+              DONE
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </main>
+
+    <!-- Fixed Buttons -->
+    <div class="btn-group">
+      <button type="button" id="btn-reset" class="btn btn-reset">🔄 Reset</button>
+      <button type="button" id="btn-generate" class="btn btn-generate">✨ Generate</button>
+    </div>
+
+  </div><!-- /form-screen -->
+
+</div><!-- /app-container -->
+
+<!-- ══════════════════════════════════════════════════════════
+     PWA INSTALL BANNER
+══════════════════════════════════════════════════════════ -->
+<div id="pwa-banner" class="pwa-banner" role="dialog" aria-label="Install aplikasi" aria-hidden="true">
+  <div class="pwa-banner-inner">
+    <div class="pwa-banner-left">
+      <img src="icons/icon-96.png" alt="Wifian" class="pwa-banner-icon" />
+      <div class="pwa-banner-text">
+        <div class="pwa-banner-title">Pasang sebagai Aplikasi</div>
+        <div class="pwa-banner-sub">Akses cepat tanpa buka browser</div>
+      </div>
+    </div>
+    <div class="pwa-banner-actions">
+      <button id="pwa-dismiss" class="pwa-btn-dismiss" aria-label="Tutup">✕</button>
+      <button id="pwa-install" class="pwa-btn-install" aria-label="Install aplikasi">Install</button>
+    </div>
+  </div>
+</div>
+
+<!-- PWA Update Banner -->
+<div id="pwa-update-banner" class="pwa-update-banner" role="dialog" aria-hidden="true">
+  <span>🔄 Versi baru tersedia!</span>
+  <button id="pwa-update-btn" class="pwa-update-btn">Perbarui</button>
+  <button id="pwa-update-dismiss" class="pwa-update-dismiss">✕</button>
+</div>
+
+<!-- iOS Install Hint (muncul di Safari iOS jika belum installed) -->
+<div id="ios-hint" class="ios-hint" role="dialog" aria-hidden="true">
+  <div class="ios-hint-inner">
+    <img src="icons/icon-72.png" alt="" class="ios-hint-icon" />
+    <div class="ios-hint-content">
+      <div class="ios-hint-title">Install di iPhone / iPad</div>
+      <div class="ios-hint-text">Ketuk <strong>⬆ Bagikan</strong> lalu pilih <strong>"Tambahkan ke Layar Utama"</strong></div>
+    </div>
+    <button id="ios-hint-close" class="ios-hint-close">✕</button>
+  </div>
+  <div class="ios-hint-arrow"></div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
