@@ -8,14 +8,14 @@
     const splash = document.getElementById('splash-screen');
     if (splash) {
       splash.classList.add('hidden');
-      setTimeout(() => splash.remove(), 700);
+      setTimeout(() => splash.remove(), 600);
     }
   }
-  // Hide after 2 seconds (give time for animation to finish)
+  // Hide after 1.5s - OS splash already showed, this just carries it through
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => setTimeout(hideSplash, 2000));
+    document.addEventListener('DOMContentLoaded', () => setTimeout(hideSplash, 1500));
   } else {
-    setTimeout(hideSplash, 2000);
+    setTimeout(hideSplash, 1500);
   }
 })();
 
