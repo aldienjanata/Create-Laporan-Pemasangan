@@ -182,6 +182,19 @@ function normalizeDesa(raw) {
   return 'DESA ' + s;
 }
 
+/**
+ * Normalize Kecamatan:
+ *   "kroya" -> "KECAMATAN KROYA"
+ *   "kec kroya" -> "KECAMATAN KROYA"
+ */
+function normalizeKecamatan(raw) {
+  if (!raw || !raw.trim()) return '';
+  let s = raw.trim().toUpperCase();
+  if (s.startsWith('KECAMATAN ')) return s;
+  if (s.startsWith('KEC ')) return s.replace('KEC ', 'KECAMATAN ');
+  return 'KECAMATAN ' + s;
+}
+
 /** Build full address */
 function buildAlamat(jalan, rtRw, desa, kecamatan) {
   const parts = [];
@@ -190,8 +203,9 @@ function buildAlamat(jalan, rtRw, desa, kecamatan) {
   if (rtrwNorm) parts.push(rtrwNorm);
   const desaNorm = normalizeDesa(desa);
   if (desaNorm) parts.push(desaNorm);
-  if (kecamatan && kecamatan.trim()) parts.push(kecamatan.trim().toUpperCase());
-  return parts.join(', ') || '-';
+  const kecNorm = normalizeKecamatan(kecamatan);
+  if (kecNorm) parts.push(kecNorm);
+  return parts.join(' ') || '-';
 }
 
 function todayISO() {
@@ -276,8 +290,7 @@ function renderSearchOptions(options, query) {
     const div = document.createElement('div');
     div.className = 'search-select-option' + (opt === koordinatorValue ? ' selected' : '');
     div.textContent = opt;
-    div.addEventListener('pointerdown', (e) => {
-      e.preventDefault();
+    div.addEventListener('click', (e) => {
       e.stopPropagation();
       koordinatorValue = opt;
       const txt = document.querySelector('#koordinator-trigger .trigger-text');
