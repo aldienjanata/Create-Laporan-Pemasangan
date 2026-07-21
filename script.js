@@ -2,6 +2,23 @@
 //  LAPORAN PEMASANGAN - SCRIPT.JS  (Revisi 2)
 // ============================================================
 
+// ─── SPLASH SCREEN ───────────────────────────────────────────
+(function() {
+  function hideSplash() {
+    const splash = document.getElementById('splash-screen');
+    if (splash) {
+      splash.classList.add('hidden');
+      setTimeout(() => splash.remove(), 700);
+    }
+  }
+  // Hide after 2 seconds (give time for animation to finish)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(hideSplash, 2000));
+  } else {
+    setTimeout(hideSplash, 2000);
+  }
+})();
+
 // ─── DATA ────────────────────────────────────────────────────
 const DATA = {
   areas: ['Banyumas', 'Cilacap', 'Herman', 'Kebumen', 'Rowokele'],
