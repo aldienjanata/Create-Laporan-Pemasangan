@@ -549,7 +549,10 @@ function generateLaporan() {
     `Panjang Kabel : ${up(panjangKabel) || '-'}`,
     `Klam Kabel : ${up(klamKabel) || '-'}`,
     `Pathcore : ${up(pathcore) || '-'}`,
-    `Sisa port ODP : ${up(sisaPort) || 'port'}`
+    `Sisa port ODP : ${up(sisaPort) || 'port'}`,
+    ``,
+    `*Thanks*`,
+    `${up(teknisi) || '-'}`
   ];
 
   const outputText = lines.join('\n');
