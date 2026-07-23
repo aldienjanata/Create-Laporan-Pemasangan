@@ -502,7 +502,7 @@ function generateLaporan() {
   const pathcore    = document.getElementById('pathcore') ? document.getElementById('pathcore').value.trim() : '';
   const sisaPort    = document.getElementById('sisa-port').value.trim();
   const wifiSeb     = document.getElementById('wifi-seb').value.trim();
-  const paket       = document.getElementById('paket').value.trim();
+  const paketSeb    = document.getElementById('paket-sebelumnya').value.trim();
   const teknisi     = document.getElementById('teknisi').value.trim();
 
   // ── Validasi NIK ──
@@ -526,33 +526,38 @@ function generateLaporan() {
 
   const lines = [
     `PEMASANGAN BARU`,
-    `${formatDate(tanggal).toUpperCase()}`,
+    `${formatDate(tanggal)}`,
     ``,
-    `ID PELANGGAN : ${idPelanggan}`,
-    `NAMA          : ${up(nama) || '-'}`,
-    `NIK             : ${nik || '-'}`,
-    `ALAMAT        : ${alamat}`,
-    `PATOKAN       : ${up(patokan) || '-'}`,
+    `ID Pelanggan  : ${idPelanggan}`,
+    `Nama          : ${up(nama) || '-'}`,
+    `NIK           : ${nik || '-'}`,
+    `Alamat        : ${alamat}`,
+    `Status Tempat Tinggal : ${up(statusTempat)}`,
+    `Patokan       : ${up(patokan) || '-'}`,
     `WA            : ${waFormatted || '-'}`,
-    `EMAIL         : ${email ? email.toUpperCase() : '-'}`,
-    `PAKET         : ${up(bandwidth) || '-'}`,
-    `MARKETING   : ${up(marketing) || '-'}`,
-    `KOORDINATOR : ${up(koordinatorValue) || '-'}`,
-    `SHARE LOK CLIENT    : ${lokURL || '-'}`,
-    `DATA TEKNIS [DATEK] :`,
+    `Email         : ${email || '-'}`,
+    `Paket         : ${up(bandwidth) || '-'}`,
+    `Marketing     : ${up(marketing) || '-'}`,
+    `Koordinator   : ${up(koordinatorValue) || '-'}`,
+    `Share Lok  Client     : ${lokURL || '-'}`,
+    `Data Teknis [Datek] :`,
     `================================`,
     `ID FAT/ODC : ${up(fatOdc) || '-'}`,
-    `TIKOR ODP : ${odpURL || '-'}`,
+    `Tikor ODP : ${odpURL || '-'}`,
+    `ID ODP : ${up(idOdp) || '-'}`,
     `SN PON : ${up(sn) || '-'}`,
+    `Vlan ID : ${up(vlanId) || '-'}`,
     `OLT : ${up(olt) || '-'}`,
-    `REDAMAN : ${up(redaman) || '-'}`,
-    `PANJANG KABEL : ${up(panjangKabel) || '-'}`,
-    `KLAM KABEL : ${up(klamKabel) || '-'}`,
-    `PATHCORE : ${up(pathcore) || '-'}`,
-    `SISA PORT ODP : ${up(sisaPort) || 'PORT'}`,
+    `Redaman : ${up(redaman) || '-'}`,
+    `Panjang Kabel : ${up(panjangKabel) || '-'}`,
+    `Klam Kabel : ${up(klamKabel) || '-'}`,
+    `Pathcore : ${up(pathcore) || '-'}`,
+    `Sisa port ODP : ${up(sisaPort) || 'port'}`,
+    `Wifi Sebelumnya : ${up(wifiSeb) || '-'}`,
+    `Paket Sebelumnya : ${up(paketSeb) || '-'}`,
     ``,
-    `*Thanks*`,
-    `${up(teknisi) || '-'}`
+    `*Thanks* `,
+    `(${up(teknisi) || 'sesuaikan dgn nama teknisi yg pasang'})`
   ];
 
   const outputText = lines.join('\n');
