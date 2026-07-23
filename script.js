@@ -232,8 +232,16 @@ function todayISO() {
 
 function formatDate(iso) {
   if (!iso) return '-';
-  const [y, m, d] = iso.split('-');
-  return `${d}/${m}/${y}`;
+  const date = new Date(iso);
+  const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+  const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+  
+  const dayName = days[date.getDay()];
+  const day = date.getDate();
+  const monthName = months[date.getMonth()];
+  const year = date.getFullYear();
+  
+  return `${dayName},${day} ${monthName} ${year}`;
 }
 
 function up(v) {
@@ -474,6 +482,7 @@ function generateLaporan() {
   const rtRwVal     = document.getElementById('alamat-rtrw').value.trim();
   const desaVal     = document.getElementById('alamat-desa').value.trim();
   const kecamatanVal= document.getElementById('alamat-kecamatan').value.trim();
+  const patokan     = document.getElementById('patokan') ? document.getElementById('patokan').value.trim() : '';
 
   const statusTempat= document.getElementById('status-tempat').value;
   const wa          = document.getElementById('wa').value.trim();
@@ -489,6 +498,8 @@ function generateLaporan() {
   const olt         = document.getElementById('olt').value.trim();
   const redaman     = document.getElementById('redaman').value.trim();
   const panjangKabel= document.getElementById('panjang-kabel').value.trim();
+  const klamKabel   = document.getElementById('klam-kabel') ? document.getElementById('klam-kabel').value.trim() : '';
+  const pathcore    = document.getElementById('pathcore') ? document.getElementById('pathcore').value.trim() : '';
   const sisaPort    = document.getElementById('sisa-port').value.trim();
   const wifiSeb     = document.getElementById('wifi-seb').value.trim();
   const paket       = document.getElementById('paket').value.trim();
@@ -515,32 +526,30 @@ function generateLaporan() {
 
   const lines = [
     `PEMASANGAN BARU`,
-    `TANGGAL ${formatDate(tanggal).toUpperCase()}`,
+    `${formatDate(tanggal)}`,
     ``,
-    `ID PELANGGAN : ${idPelanggan}`,
-    `NIK : ${nik || '-'}`,
-    `NAMA : ${up(nama)}`,
-    `ALAMAT : ${alamat}`,
-    `STATUS TEMPAT TINGGAL : ${up(statusTempat)}`,
-    `WA : ${waFormatted}`,
-    `EMAIL : ${email || '-'}`,
-    `BANDWITH : ${up(bandwidth)}`,
-    `MARKETING : ${up(marketing)}`,
-    `KOORDINATOR : ${up(koordinatorValue)}`,
-    `SHARE LOK : ${lokURL}`,
+    `ID Pelanggan : ${idPelanggan}`,
+    `Nama          : ${up(nama) || '-'}`,
+    `NIK             : ${nik || '-'}`,
+    `Alamat        : ${alamat}`,
+    `Patokan       : ${up(patokan) || '-'}`,
+    `WA            : ${waFormatted || '-'}`,
+    `Email         : ${email || '-'}`,
+    `Paket         : ${up(bandwidth) || '-'}`,
+    `Marketing   : ${up(marketing) || '-'}`,
+    `Koordinator : ${up(koordinatorValue) || '-'}`,
+    `Share Lok  Client     : ${lokURL || '-'}`,
+    `Data Teknis [Datek] :`,
+    `================================`,
     `ID FAT/ODC : ${up(fatOdc) || '-'}`,
-    `SHARE LOK ODP : ${odpURL}`,
-    `ID ODP : ${up(idOdp) || '-'}`,
-    `SN : ${up(sn)}`,
-    `VLAN-ID : ${up(vlanId)}`,
-    `OLT : ${up(olt)}`,
-    `REDAMAN : ${up(redaman)}`,
-    `PANJANG KABEL : ${up(panjangKabel)}`,
-    `SISA PORT : ${up(sisaPort)}`,
-    `WIFI SEBELUMNYA : ${up(wifiSeb) || '-'}`,
-    `PAKET : ${up(paket) || '-'}`,
-    `TEKNISI : ${up(teknisi)}`,
-    `STATUS : DONE`
+    `Tikor ODP : ${odpURL || '-'}`,
+    `SN PON : ${up(sn) || '-'}`,
+    `OLT : ${up(olt) || '-'}`,
+    `Redaman : ${up(redaman) || '-'}`,
+    `Panjang Kabel : ${up(panjangKabel) || '-'}`,
+    `Klam Kabel : ${up(klamKabel) || '-'}`,
+    `Pathcore : ${up(pathcore) || '-'}`,
+    `Sisa port ODP : ${up(sisaPort) || 'port'}`
   ];
 
   const outputText = lines.join('\n');
