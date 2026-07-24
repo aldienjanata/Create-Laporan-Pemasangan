@@ -3,7 +3,7 @@
 //  Versi: 1.0.0
 // ============================================================
 
-const CACHE_NAME = 'laporan-wifian-v12';
+const CACHE_NAME = 'laporan-wifian-v13';
 const OFFLINE_URL = './index.html';
 
 // File yang di-cache saat install

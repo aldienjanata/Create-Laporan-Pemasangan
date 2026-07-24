@@ -539,7 +539,7 @@ function generateLaporan() {
     `PAKET: ${up(bandwidth) || '-'}`,
     `MARKETING: ${up(marketing) || '-'}`,
     `KOORDINATOR: ${up(koordinatorValue) || '-'}`,
-    `SHARE LOK  CLIENT: ${lokURL || '-'}`,
+    `SHARE LOK CLIENT: ${lokURL || '-'}`,
     `ID FAT/ODC: ${up(fatOdc) || '-'}`,
     `TIKOR ODP: ${odpURL || '-'}`,
     `ID ODP: ${up(idOdp) || '-'}`,
