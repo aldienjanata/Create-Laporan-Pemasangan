@@ -538,7 +538,7 @@ function generateLaporan() {
     `STATUS TEMPAT TINGGAL: ${up(statusTempat)}`,
     `PATOKAN: ${up(patokan) || '-'}`,
     `WA: ${waFormatted || '-'}`,
-    `EMAIL: ${email ? email.toUpperCase() : '-'}`,
+    `EMAIL: ${email ? email.toLowerCase() : '-'}`,
     `PAKET: ${up(bandwidth) || '-'}`,
     `MARKETING: ${up(marketing) || '-'}`,
     `KOORDINATOR: ${up(koordinatorValue) || '-'}`,
@@ -549,7 +549,7 @@ function generateLaporan() {
     `SN PON: ${up(sn) || '-'}`,
     `VLAN ID: ${up(vlanId) || '-'}`,
     `OLT: ${up(olt) || '-'}`,
-    `REDAMAN: ${up(redaman) || '-'}`,
+    `REDAMAN: ${redaman || '-'}`,
     `PANJANG KABEL: ${up(panjangKabel) || '-'}`,
     `KLAM KABEL: ${up(klamKabel) || '-'}`,
     `PATHCORE: ${up(pathcore) || '-'}`,
@@ -696,7 +696,7 @@ function initPWA() {
             const newWorker = reg.installing;
             newWorker.addEventListener('statechange', () => {
               if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                showUpdateBanner(newWorker);
+                newWorker.postMessage({ type: 'SKIP_WAITING' });
               }
             });
           });
@@ -779,19 +779,3 @@ function initPWA() {
   }
 }
 
-function showUpdateBanner(worker) {
-  const banner = document.getElementById('pwa-update-banner');
-  const btnUpdate = document.getElementById('pwa-update-btn');
-  const btnDismiss = document.getElementById('pwa-update-dismiss');
-
-  banner.classList.add('show');
-
-  btnUpdate.addEventListener('click', () => {
-    banner.classList.remove('show');
-    worker.postMessage({ type: 'SKIP_WAITING' });
-  });
-
-  btnDismiss.addEventListener('click', () => {
-    banner.classList.remove('show');
-  });
-}
