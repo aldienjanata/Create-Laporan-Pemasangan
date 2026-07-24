@@ -494,6 +494,7 @@ function generateLaporan() {
   const shareOdp    = document.getElementById('share-odp').value;
   const idOdp       = document.getElementById('id-odp').value.trim();
   const sn          = document.getElementById('sn').value.trim();
+  const vlanId      = document.getElementById('vlan-id').value.trim();
   const olt         = document.getElementById('olt').value.trim();
   const redaman     = document.getElementById('redaman').value.trim();
   const panjangKabel= document.getElementById('panjang-kabel').value.trim();
@@ -543,6 +544,7 @@ function generateLaporan() {
     `TIKOR ODP: ${odpURL || '-'}`,
     `ID ODP: ${up(idOdp) || '-'}`,
     `SN PON: ${up(sn) || '-'}`,
+    `VLAN ID: ${up(vlanId) || '-'}`,
     `OLT: ${up(olt) || '-'}`,
     `REDAMAN: ${up(redaman) || '-'}`,
     `PANJANG KABEL: ${up(panjangKabel) || '-'}`,
