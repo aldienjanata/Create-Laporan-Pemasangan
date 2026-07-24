@@ -496,7 +496,10 @@ function generateLaporan() {
   const sn          = document.getElementById('sn').value.trim();
   const vlanId      = document.getElementById('vlan-id').value.trim();
   const olt         = document.getElementById('olt').value.trim();
-  const redaman     = document.getElementById('redaman').value.trim();
+  let redaman = document.getElementById('redaman').value.trim();
+  if (redaman) {
+    redaman = `-${redaman.replace(/^-/, '').replace(/dbm/i, '').trim()} dbm`;
+  }
   const panjangKabel= document.getElementById('panjang-kabel').value.trim();
   const klamKabel   = document.getElementById('klam-kabel') ? document.getElementById('klam-kabel').value.trim() : '';
   const pathcore    = document.getElementById('pathcore') ? document.getElementById('pathcore').value.trim() : '';
