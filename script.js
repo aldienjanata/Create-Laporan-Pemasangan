@@ -87,6 +87,7 @@ const DATA = {
       'PAKET 50 MBPS - Rp 175.000',
       'PAKET 2026 PROMO 3 BULAN 100Mbps - Rp 100.000',
       'PAKET 2026 PROMO 100Mbps - Rp 150.000',
+      'PAKET PROMO 50Mbps - 20Rb',
       'HELIUM 70Mbps - Rp 200.000',
       'HELIUM 50Mbps - Rp 180.000',
       'HELIUM 50 MBPS FREE - Rp 0'
@@ -133,7 +134,8 @@ const DATA = {
     ],
     Rowokele: [
       'Dahori','Chomsiyatun','Andika Tri Wibowo','Sulasih','Gatot Setiawan',
-      'Supendi','Nugraha Era Pamungkas','Wiratama Aji Pamungkas','Edi Pranoto','Nur Chamid'
+      'Supendi','Nugraha Era Pamungkas','Wiratama Aji Pamungkas','Edi Pranoto','Nur Chamid',
+      'Agung Febriyanto','Candra Meigiyarto','Paimun','Joko Iriyanto','Slamet Riyadi'
     ]
   },
 
@@ -178,10 +180,10 @@ function normalizeIdPelanggan(rawInput, suffix) {
 function normalizeRTRW(raw) {
   if (!raw || !raw.trim()) return '';
   const s = raw.trim();
-  // Match pattern: optional "RT" then number, optional "RW" then number
-  const match = s.match(/(?:rt\s*)?(\d+)\s*[/\-]\s*(?:rw\s*)?(\d+)/i);
+  // Mendukung: 02/05, RT 02/05, RT 02 RW 05, rt 15 rw 1, 02-05, dll
+  const match = s.match(/(?:rt[.\s]*)?([\d]+)\s*[\/\-,\s]+\s*(?:rw[.\s]*)?([\d]+)/i);
   if (match) {
-    return `RT ${match[1].padStart(2,'0')} RW ${match[2].padStart(2,'0')}`;
+    return `RT ${match[1].padStart(3,'0')} RW ${match[2].padStart(3,'0')}`;
   }
   return s.toUpperCase();
 }
@@ -212,15 +214,24 @@ function normalizeKecamatan(raw) {
   return 'KECAMATAN ' + s;
 }
 
+/** Bersihkan karakter unik dari teks alamat (koma, titik, dll) */
+function cleanAddress(text) {
+  if (!text || !text.trim()) return '';
+  return text.trim()
+    .replace(/[,;:!?"'()\[\]{}|@#$%^&*+=<>]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 /** Build full address */
 function buildAlamat(jalan, rtRw, desa, kecamatan) {
   const parts = [];
-  if (jalan && jalan.trim()) parts.push(jalan.trim().toUpperCase());
-  const rtrwNorm = normalizeRTRW(rtRw);
+  if (jalan && jalan.trim()) parts.push(cleanAddress(jalan).toUpperCase());
+  const rtrwNorm = normalizeRTRW(cleanAddress(rtRw));
   if (rtrwNorm) parts.push(rtrwNorm);
-  const desaNorm = normalizeDesa(desa);
+  const desaNorm = normalizeDesa(cleanAddress(desa));
   if (desaNorm) parts.push(desaNorm);
-  const kecNorm = normalizeKecamatan(kecamatan);
+  const kecNorm = normalizeKecamatan(cleanAddress(kecamatan));
   if (kecNorm) parts.push(kecNorm);
   return parts.join(' ') || '-';
 }
